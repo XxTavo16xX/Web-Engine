@@ -1,0 +1,30 @@
+{
+  "name": "web-engine",
+  "description": "The purpose of this repository is to index all the urls listed on a website sitemap file into the WEB INDEXED CONTENT collection.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XxTavo16xX/Web-Engine.git"
+  },
+  "keywords": [],
+  "author": "Armando Peralta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XxTavo16xX/Web-Engine/issues"
+  },
+  "homepage": "https://github.com/XxTavo16xX/Web-Engine#readme",
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "ts-node-dev": "^2.0.0",
+    "tsconfig-paths": "^4.2.0"
+  }
+}
