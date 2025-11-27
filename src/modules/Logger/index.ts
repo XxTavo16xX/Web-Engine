@@ -13,14 +13,14 @@ class Logger {
 
     public static log(message: Logger_Message) {
 
-        console.log(message);
+        console.log(`[${message.channel}]: ${message.message}`);
         this.save_Locally(message);
-        
+
     }
-    
+
     public static error(message: Logger_Message) {
-        
-        console.error(message);
+
+        console.log(`[${message.channel}]: ${message.message}`);
         this.save_Locally(message);
 
     }
@@ -56,7 +56,7 @@ class Logger {
             // * Message Formating
 
             const time = now.toISOString();
-            const log_Entry = `[${time}] ${JSON.stringify(message)}\n`;
+            const log_Entry = `[${time}] [${message.channel}]: ${message.message}\n`;
 
             // * Saving Log
 
@@ -65,7 +65,7 @@ class Logger {
         } catch (error) {
 
             console.error("Logger Error:", error);
-            
+
         }
 
     }
