@@ -3,6 +3,7 @@
 
 import Logger from "@modules/Logger";
 import Database from "@modules/Database";
+import Web_Presence from "@modules/Web-Presence";
 
 // * Manager Exported
 
@@ -23,13 +24,13 @@ class Engine_Manager {
 
         Logger.log({ channel: "Engine-Manager", message: "Starting Engine" });
 
-        // * Getting Database Status
-
-        Database.Test_Connection();
-
         // * Shutdown Handler
 
         this.configure_Shutdown();
+
+        // * Starting Engine
+
+        this.init();
 
     }
 
@@ -49,17 +50,29 @@ class Engine_Manager {
         });
 
         process.on("uncaughtException", (err) => {
-            
+
             Logger.error({ channel: "Engine-Manager", message: `Uncaught Exception: ${err.message}` });
             process.exit(1);
 
         });
 
         process.on("unhandledRejection", (reason: any) => {
-            
-            Logger.error({ channel: "Engine-Manager", message: `Unhandled Rejection: ${reason}`});
+
+            Logger.error({ channel: "Engine-Manager", message: `Unhandled Rejection: ${reason}` });
 
         });
+    }
+
+    private async init() {
+
+        // * Getting Database Status
+
+        await Database.Test_Connection();
+
+        // * Syncronizing Domains
+
+        await Web_Presence.get_Instance().sync_Domains();
+
     }
 
 }
