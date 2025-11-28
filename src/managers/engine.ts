@@ -5,6 +5,10 @@ import Logger from "@modules/Logger";
 import Database from "@modules/Database";
 import Web_Presence from "@modules/Web-Presence";
 
+// * Manager Required
+
+import Website_Manager from "@managers/Website";
+
 // * Manager Exported
 
 class Engine_Manager {
@@ -72,6 +76,10 @@ class Engine_Manager {
         // * Syncronizing Domains
 
         await Web_Presence.get_Instance().sync_Domains();
+
+        // * Processing Websites
+
+        await Website_Manager.get_Instance().start_Processing();
 
     }
 
