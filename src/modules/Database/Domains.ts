@@ -16,7 +16,7 @@ import Website from "./models/Website";
 
 class Domains_Database {
 
-    public static get_Websites_Status(website_domains: string[]): Promise<{ website_domain: string, status: { sitemap_url: string, last_modification: number } | null }[]> {
+    public static get_Websites_Status_By_Domain(website_domains: string[]): Promise<{ website_domain: string, status: { sitemap_url: string, last_modification: number } | null }[]> {
 
         return new Promise(async (resolve, reject) => {
 
@@ -126,7 +126,7 @@ class Domains_Database {
 
     }
 
-    public static get_Website_Status(): Promise<{ websites: WithId<Website_Document>[] }> {
+    public static get_Website_Status(): Promise<WithId<Website_Document>[]> {
 
         return new Promise(async (resolve, reject) => {
 
@@ -146,7 +146,7 @@ class Domains_Database {
 
                 // * Returning Search Results
 
-                return resolve({ websites: search_Results });
+                return resolve(search_Results);
 
             } catch (error) {
 

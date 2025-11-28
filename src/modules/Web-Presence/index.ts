@@ -50,7 +50,7 @@ class Web_Presence {
 
         const websites_names = websites_at_web_presence.results.map(website => website.domain);
 
-        const website_status = await Domains_Database.get_Websites_Status(websites_names);
+        const website_status = await Domains_Database.get_Websites_Status_By_Domain(websites_names);
 
         // * Processing Local Database Status
 

@@ -43,7 +43,8 @@
     "skipLibCheck": true,
     "baseUrl": "./src",
     "paths": {
-      "@modules/*": ["modules/*"]
+      "@modules/*": ["modules/*"],
+      "@managers/*": ["managers/*"],
     }
   }
 }
