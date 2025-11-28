@@ -1,7 +1,7 @@
 
 // * Dependencies Required
 
-import { Db, MongoClient, Collection } from "mongodb";
+import { Db, MongoClient, Collection, type Document } from "mongodb";
 
 // * Modules Required
 
@@ -44,10 +44,12 @@ class Database {
                 client.close().then(() => {
 
                     Logger.log({ channel: "Node-Database", message: `Test connection closed successfully` });
+                    
+                }).finally(() => {
 
-                })
+                    return resolve({ connection_successful: Boolean(ok), mongodb_version: version });
 
-                return resolve({ connection_successful: Boolean(ok), mongodb_version: version });
+                });                
 
             } catch (error) {
 
