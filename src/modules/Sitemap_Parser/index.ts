@@ -13,6 +13,10 @@ import Logger from "@modules/Logger";
 import Website_Open_Graph_Parser from "@modules/Open-Graph-Parser";
 import Account_Content_Database from "@modules/Database/Account-Content";
 
+// * Utils required
+
+import { isWithinOneWeek } from "utils/timestamp";
+
 // * Module Expoted
 
 class Sitemap_Parser {
@@ -108,7 +112,7 @@ class Sitemap_Parser {
 
         const lastmod = entry.lastmod ? new Date(entry.lastmod).getTime() : entry["news:news"]?.["news:publication_date"] ? new Date(entry["news:news"]["news:publication_date"]).getTime() : Date.now();
 
-        if (lastmod < 1761976800000) return null        
+        if (isWithinOneWeek(lastmod) === false) return null
 
         const title = entry["news:news"]?.["news:title"] || entry.title?.cdata || entry.title || "";
 

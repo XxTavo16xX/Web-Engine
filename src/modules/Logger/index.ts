@@ -13,14 +13,14 @@ class Logger {
 
     public static log(message: Logger_Message) {
 
-        console.log(`[${message.channel}]: ${message.message}`);
+        console.log(`[${Date.now()}]:[${message.channel}]: ${message.message}`);
         this.save_Locally(message);
 
     }
 
     public static error(message: Logger_Message) {
 
-        console.log(`[${message.channel}]: ${message.message}`);
+        console.log(`[${Date.now()}]:[${message.channel}]: ${message.message}`);
         this.save_Locally(message);
 
     }
